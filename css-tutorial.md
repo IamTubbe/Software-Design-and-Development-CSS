@@ -1206,10 +1206,196 @@ body {
 
 ### ผลการทดลอง
 ```html
-[วางโค้ด HTML ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>แดชบอร์ด</h1>
+            <nav>
+                <button>โปรไฟล์</button>
+                <button>ออกจากระบบ</button>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" class="menu-item" id="active">หน้าแรก</a></li>
+                    <li><a href="#" class="menu-item">สินค้า</a></li>
+                    <li><a href="#" class="menu-item">รายงาน</a></li>
+                    <li><a href="#" class="menu-item">การตั้งค่า</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <h3>ยอดขายรวม</h3>
+                    <p>฿150,000</p>
+                </div>
+                <div class="stat-card">
+                    <h3>จำนวนออเดอร์</h3>
+                    <p>1,234</p>
+                </div>
+                <div class="stat-card">
+                    <h3>ลูกค้าใหม่</h3>
+                    <p>45</p>
+                </div>
+            </section>
+
+            <section class="chart-container">
+                <div class="chart">
+                    <h3>กราฟแสดงยอดขาย</h3>
+                    <a href="images/gallery/7777.jpg"> 
+                        <img src="images/gallery/7777.jpg" alt="คลิกเพื่อดูรูปขนาดใหญ่">
+                    </a>
+                </div>
+                <div class="chart">
+                    <h3>สัดส่วนสินค้าขายดี</h3>
+                    <a href="images/gallery/565656.png"> 
+                        <img src="images/gallery/565656.png" alt="คลิกเพื่อดูรูปขนาดใหญ่">
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+
 ```
 ```css
-[วางโค้ด CSS ที่นี่]
+.dashboard {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar main";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 70px 1fr;
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    background: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header h1 {
+    font-size: 1.8em;
+}
+
+.header nav button {
+    background: rgb(255, 255, 255);
+    color: #4CAF50;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .menu-item {
+    display: block;
+    padding: 10px;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.sidebar .menu-item:hover {
+    background: #000000;
+}
+
+.sidebar .menu-item#active {
+    background: #4CAF50;
+}
+
+.main-content {
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: rgb(190, 190, 190);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #000000;
+}
+
+.stat-card p {
+    font-size: 1.5em;
+    color: #4CAF50;
+}
+
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chart {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-areas: 
+            "header"
+            "main";
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .chart-container {
+        grid-template-columns: 1fr;
+    }
+}
 ```
 [บันทึกภาพหน้าจอของผลลัพธ์การทดลอง]
+![image](https://github.com/user-attachments/assets/2331def0-f9cb-4ef9-83cb-46055eca2d98)
 
